@@ -63,7 +63,13 @@ function performPrint (iframeElement, params) {
       }
     } else {
       // Other browsers
-      iframeElement.contentWindow.print()
+      iframeElement.contentWindow.print
+      
+      // ------- This was added - start
+      if(Browser.isChrome()){
+        window.dispatchEvent(new Event("focus"));
+      }
+// -------- This was added - end
     }
   } catch (error) {
     params.onError(error)
